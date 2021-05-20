@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejer-ajax-1</title>
+</head>
+
+<body>
+    <button id="btnShow">show USER</button>
+    <div class="box">
+        <h1>datos de usuario:</h1>
+        <h3 id="nombre"></h3>
+        <h3 id="apellido"></h3>
+        <h3 id="edad"></h3>
+    </div>
+    <script>
+        const btnShowAPOD = document.getElementById('btnShow');
+        const h1nombre = document.getElementById('nombre');
+        const h3apellido = document.getElementById('apellido');
+        const edad = document.getElementById('edad');
+        
+        btnShowAPOD.addEventListener('click', function () {
+            const xhr = new XMLHttpRequest();
+            xhr.addEventListener('load', function () {
+                const response = JSON.parse(xhr.responseText);
+                console.log(response);
+                h1nombre.textContent = "el nombre es: " + response.nombre;
+                h3apellido.textContent = "el apellido es:" + response.apellido;
+                edad.textContent = "la edad es: " + response.edad;
+            });
+
+            xhr.open('GET', '/user');
+            // envia el pedido
+            xhr.send();
+
+        });
+    </script>
+</body>
+
+</html>

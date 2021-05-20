@@ -8,13 +8,13 @@
 </head>
 <body>
     <input type="date" name="date" id="inputDate">
+    
     <button id="btnShow">show APOD</button>
     <div class="box">
         <h1 id="title"></h1>
         <h3 id="date"></h3>
         <p id="explanation"></p>
         <img id="image" src="" alt="">
-
     </div>
     <script>
         
@@ -42,7 +42,7 @@
                 image.setAttribute('src',response.url);
             });
 
-            xhr.open('GET','https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY');
+            xhr.open('GET','https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date='+ inputDate.value);
             // envia el pedido
             xhr.send();
 
